@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button block icon-left (tap)="buscarUbicacion()" color="accent-color" round>
+          <ion-icon name="ios-locate"></ion-icon>
+          Conocer mi ubicación
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <agm-map [latitude]="m.lat" [longitude]="m.lng" [zoom]="18">
+    <agm-marker [latitude]="m.lat" [longitude]="m.lng" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+      <agm-info-window #infoWindow><strong>{{m.label}}</strong></agm-info-window>
+    </agm-marker>
+  </agm-map>
+</ion-content>
